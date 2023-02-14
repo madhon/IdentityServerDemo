@@ -16,6 +16,7 @@
                 opts.RequireHttpsMetadata = false;
                 opts.Audience = "api://api.weather";
                 opts.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
+                opts.MapInboundClaims = false;
             });
 
             return builder;

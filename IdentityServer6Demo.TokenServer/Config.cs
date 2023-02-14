@@ -15,16 +15,34 @@
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                new ApiScope("api.weather.read", "Read Weather Data"),
-                new ApiScope("manage", "Administrative Access to Weather Data")
+                new ApiScope()
+                {
+                    Name = ApiConstants.ApiReadScope,
+                    DisplayName = "Read Weather Data",
+                    UserClaims = new List<string>()
+                    {
+                        "readweather"
+                    }
+                },
+                new ApiScope()
+                {
+                    Name = ApiConstants.ApiManageScope,
+                    DisplayName = "Administrative Access to Weather Data",
+                    UserClaims = new List<string>()
+                    {
+                        "manageweather"
+                    }
+                },
             };
 
         public static IEnumerable<ApiResource> ApiResources =>
             new List<ApiResource>
             {
-                new ApiResource("api://api.weather", "Weather API")
+                new ApiResource()
                 {
-                    Scopes = { "api.weather.read", "manage" }
+                    Name = ApiConstants.WeatherApiAudience,
+                    DisplayName = "Weather API",
+                    Scopes = { ApiConstants.ApiReadScope, ApiConstants.ApiManageScope }
                 }
             };
 
@@ -41,7 +59,7 @@
                     },
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
 
-                    AllowedScopes = { "api.weather.read", "manage" },
+                    AllowedScopes = { ApiConstants.ApiReadScope, ApiConstants.ApiManageScope },
                     Enabled = true,
                     AccessTokenLifetime = 3600 * 4
                 }
