@@ -2,8 +2,9 @@
 
 using Serilog;
 using Serilog.Events;
+using Serilog.Settings.Configuration;
 
-public static class SerilogExtensions
+internal static class SerilogExtensions
 {
     public static WebApplicationBuilder AddSerilog(this WebApplicationBuilder builder, string sectionName = "Serilog")
     {
@@ -12,7 +13,8 @@ public static class SerilogExtensions
 
         builder.Host.UseSerilog((context, loggerConfiguration) =>
         {
-            loggerConfiguration.ReadFrom.Configuration(context.Configuration, sectionName: sectionName);
+            var options = new ConfigurationReaderOptions { SectionName = "Serilog" };
+            loggerConfiguration.ReadFrom.Configuration(context.Configuration, options);
 
             loggerConfiguration
                 .Enrich.WithProperty("Application", builder.Environment.ApplicationName)
@@ -33,7 +35,7 @@ public static class SerilogExtensions
         return builder;
     }
 
-    private sealed class SerilogOptions
+    internal sealed class SerilogOptions
     {
         public bool UseConsole { get; set; } = true;
 

@@ -12,7 +12,7 @@
                 opts.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(opts =>
             {
-                opts.Authority = "http://localhost:5156";
+                opts.Authority = "https://localhost:5150";
                 opts.RequireHttpsMetadata = false;
                 opts.Audience = "api://api.weather";
                 opts.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
