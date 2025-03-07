@@ -7,7 +7,7 @@ builder.ConfigureJsonOptions();
 builder.AddJwtAuthentication();
 builder.AddWeatherForecastServices();
 
-builder.AddSwaggerServices();
+builder.AddOpenApiServices();
 
 
 var app = builder.Build();
@@ -21,7 +21,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseSwaggerServices();
+app.UseOpenApiServices();
 
 app.MapGetWeatherForecast();
 

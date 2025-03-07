@@ -32,7 +32,7 @@ builder.Services.AddOpenIddict()
         options
             .SetAuthorizationEndpointUris("/connect/authorize")
             .SetTokenEndpointUris("/connect/token")
-            .SetUserinfoEndpointUris("/connect/userinfo")
+            .SetUserInfoEndpointUris("/connect/userinfo")
             .SetIntrospectionEndpointUris("/connect/introspect")
             .SetRevocationEndpointUris("/connect/revoke");
 
@@ -48,7 +48,7 @@ builder.Services.AddOpenIddict()
             .EnableStatusCodePagesIntegration()
             .EnableTokenEndpointPassthrough()
             .EnableAuthorizationEndpointPassthrough()
-            .EnableUserinfoEndpointPassthrough();  
+            .EnableUserInfoEndpointPassthrough();  
     })
     .AddValidation(o =>
     {
