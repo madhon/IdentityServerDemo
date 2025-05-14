@@ -7,7 +7,6 @@ LoggerBootstrap.Configure();
 
 builder.Host.UseSerilog();
 
-
 builder.Services.AddIdentityServer(opts =>
     {
         opts.Events.RaiseErrorEvents = true;

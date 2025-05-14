@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Project Path="IdentityServer4Demo.TokenServer/IdentityServer4Demo.TokenServer.csproj" />
+  <Project Path="IdentityServer4Demo.WeatherApi/IdentityServer4Demo.WeatherApi.csproj" />
+  <Project Path="IdentityServer6Demo.TokenServer/IdentityServer6Demo.TokenServer.csproj" />
+  <Project Path="OpenIddictDemo.TokenServer/OpenIddictDemo.TokenServer.csproj" />
+</Solution>

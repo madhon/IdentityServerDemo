@@ -1,52 +1,50 @@
-﻿namespace IdentityServer4Demo.WeatherApi.Extensions
+﻿namespace IdentityServer4Demo.WeatherApi.Extensions;
+
+using Microsoft.OpenApi.Models;
+using Scalar.AspNetCore;
+
+public static class OpenApiExtensions
 {
-    using Microsoft.OpenApi.Models;
-    using System.Globalization;
-    using Scalar.AspNetCore;
-
-    public static class OpenApiExtensions
+    public static WebApplicationBuilder AddOpenApiServices(this WebApplicationBuilder builder)
     {
-        public static WebApplicationBuilder AddOpenApiServices(this WebApplicationBuilder builder)
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddOpenApi(options =>
         {
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddOpenApi(options =>
+            options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
+            options.AddDocumentTransformer((document, context, cancellationToken) =>
             {
-                options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
-                options.AddDocumentTransformer((document, context, cancellationToken) =>
+                document.Info = new OpenApiInfo
                 {
-                    document.Info = new OpenApiInfo
+                    Title = "Weather Forecast API",
+                    Description = "An example Weather Forecast Minimal API in .NET 9.",
+                    Version = "v1",
+                    Contact = new OpenApiContact
                     {
-                        Title = "Weather Forecast API",
-                        Description = "An example Weather Forecast Minimal API in .NET 9.",
-                        Version = "v1",
-                        Contact = new OpenApiContact
-                        {
-                            Name = "Weather Forecast API",
-                            Email = "madhon@madhon.co.uk"
-                        },
-                        License = new OpenApiLicense()
-                        {
-                            Name = "Weather Forecast API - License - MIT",
-                            Url = new Uri("https://opensource.org/licenses/MIT")
-                        }
-                    };
+                        Name = "Weather Forecast API",
+                        Email = "madhon@madhon.co.uk",
+                    },
+                    License = new OpenApiLicense()
+                    {
+                        Name = "Weather Forecast API - License - MIT",
+                        Url = new Uri("https://opensource.org/licenses/MIT"),
+                    },
+                };
                     
-                    return Task.CompletedTask;
-                }); 
-            });
+                return Task.CompletedTask;
+            }); 
+        });
 
-            return builder;
-        }
+        return builder;
+    }
 
-        public static WebApplication UseOpenApiServices(this WebApplication app)
+    public static WebApplication UseOpenApiServices(this WebApplication app)
+    {
+        if (app.Environment.IsDevelopment())
         {
-            if (app.Environment.IsDevelopment())
-            {
-                app.MapOpenApi();
-                app.MapScalarApiReference();
-            }
-            
-            return app;
+            app.MapOpenApi();
+            app.MapScalarApiReference();
         }
+            
+        return app;
     }
 }

@@ -1,6 +1,5 @@
 ﻿namespace OpenIddictDemo.TokenServer;
 
-using Microsoft.EntityFrameworkCore;
 using OpenIddict.Abstractions;
 
 public class TestData : IHostedService

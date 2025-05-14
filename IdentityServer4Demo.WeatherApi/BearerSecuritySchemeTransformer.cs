@@ -13,13 +13,13 @@ internal sealed class BearerSecuritySchemeTransformer(IAuthenticationSchemeProvi
         {
             var requirements = new Dictionary<string, OpenApiSecurityScheme>
             {
-                ["Bearer"] = new OpenApiSecurityScheme
+                ["Bearer"] = new()
                 {
                     Type = SecuritySchemeType.Http,
                     Scheme = "bearer", // "bearer" refers to the header name here
                     In = ParameterLocation.Header,
-                    BearerFormat = "Json Web Token"
-                }
+                    BearerFormat = "Json Web Token",
+                },
             };
             document.Components ??= new OpenApiComponents();
             document.Components.SecuritySchemes = requirements;

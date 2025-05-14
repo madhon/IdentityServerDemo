@@ -1,6 +1,6 @@
 ﻿namespace OpenIddictDemo.TokenServer;
 
-public class ApiConstants
+internal static class ApiConstants
 {
     public const string ApiReadScope = "api.weather.read";
     public const string ApiManageScope = "api.weather.manage";

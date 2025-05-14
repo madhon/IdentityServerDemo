@@ -9,7 +9,7 @@ using static OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlerFilte
 using static OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers;
 using static OpenIddict.Server.OpenIddictServerEvents;
 
-public static class OpenIddictServerExtensions
+internal static class OpenIddictServerExtensions
 {
     public static OpenIddictServerBuilder AddCustomHandlers(this OpenIddictServerBuilder builder)
     {

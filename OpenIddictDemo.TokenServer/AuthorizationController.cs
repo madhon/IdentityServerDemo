@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
 
-public class AuthorizationController : Controller
+public sealed class AuthorizationController : Controller
 {
     [HttpPost("~/connect/token")]
     public async Task<IActionResult> Exchange()
@@ -84,7 +84,7 @@ public class AuthorizationController : Controller
         var claims = new List<Claim>
         {
             // 'subject' claim which is required
-            new Claim(OpenIddictConstants.Claims.Subject, result.Principal.Identity.Name),
+            new(OpenIddictConstants.Claims.Subject, result.Principal?.Identity?.Name ?? string.Empty),
             new Claim("some claim", "some value").SetDestinations(OpenIddictConstants.Destinations.AccessToken)
         };
 
@@ -107,9 +107,9 @@ public class AuthorizationController : Controller
 
         return Ok(new
         {
-            Name = claimsPrincipal.GetClaim(OpenIddictConstants.Claims.Subject),
+            Name = claimsPrincipal?.GetClaim(OpenIddictConstants.Claims.Subject) ?? string.Empty,
             Occupation = "Developer",
-            Age = 43
+            Age = 43,
         });
     }
     

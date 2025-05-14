@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-55p7-v223-x366" />
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-ff4q-64jc-gx98" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageReference Include="IdentityServer4"/>
     <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="Serilog" />
