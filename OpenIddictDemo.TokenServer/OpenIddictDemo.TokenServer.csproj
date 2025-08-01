@@ -11,6 +11,7 @@
         <PackageReference Include="OpenIddict" />
         <PackageReference Include="OpenIddict.EntityFrameworkCore" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory"  />
+        <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" />
     </ItemGroup>
     
 </Project>

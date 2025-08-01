@@ -41,6 +41,7 @@ builder.Services.AddOpenIddict()
             .AddDevelopmentSigningCertificate()
             .DisableAccessTokenEncryption();
 
+        options.RegisterAudiences(ApiConstants.WeatherApiAuthority);
         options.RegisterScopes(ApiConstants.ApiReadScope, ApiConstants.ApiManageScope);
         
         options
@@ -58,6 +59,8 @@ builder.Services.AddOpenIddict()
         o.UseAspNetCore();
         o.EnableTokenEntryValidation();
     });;
+
+builder.Services.AddScoped<ApplicationDbContext>();
 
 var app = builder.Build();
 

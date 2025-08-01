@@ -2,8 +2,6 @@
 
 using Microsoft.AspNetCore;
 using OpenIddict.Abstractions;
-using System.Diagnostics;
-using System.Security.Claims;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 using static OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlerFilters;
 using static OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers;

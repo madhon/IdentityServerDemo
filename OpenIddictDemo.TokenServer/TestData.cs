@@ -22,7 +22,7 @@ public class TestData : IHostedService
 
         if (await manager.FindByClientIdAsync("client", cancellationToken) is null)
         {
-            await manager.CreateAsync(new OpenIddictApplicationDescriptor
+            var appDescriptor = new OpenIddictApplicationDescriptor
             {
                 ClientId = "client",
                 ClientSecret = "secret",
@@ -47,7 +47,11 @@ public class TestData : IHostedService
                     
                     OpenIddictConstants.Permissions.ResponseTypes.Code
                 }
-            }, cancellationToken);
+            };
+
+            appDescriptor.AddAudiencePermissions(ApiConstants.WeatherApiAudience);
+            
+            await manager.CreateAsync(appDescriptor, cancellationToken);
         }
     }
 
