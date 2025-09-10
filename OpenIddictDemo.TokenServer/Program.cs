@@ -53,7 +53,7 @@ builder.Services.AddOpenIddict()
     })
     .AddValidation(o =>
     {
-        o.SetIssuer(ApiConstants.WeatherApiAuthority);
+        o.SetIssuer(new Uri(ApiConstants.WeatherApiAuthority));
         o.AddAudiences(ApiConstants.WeatherApiAudience);
         o.UseLocalServer();
         o.UseAspNetCore();

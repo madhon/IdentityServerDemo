@@ -6,4 +6,4 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(WeatherForecast))]
 [JsonSerializable(typeof(WeatherForecast[]))]
 [JsonSourceGenerationOptions(defaults: JsonSerializerDefaults.Web, GenerationMode = JsonSourceGenerationMode.Default)]
-internal partial class AppJsonSerializerContext : JsonSerializerContext;
+internal sealed partial class AppJsonSerializerContext : JsonSerializerContext;

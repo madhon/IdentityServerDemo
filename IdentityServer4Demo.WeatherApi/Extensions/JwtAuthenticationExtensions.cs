@@ -1,9 +1,16 @@
 ﻿namespace IdentityServer4Demo.WeatherApi.Extensions;
 
-public static class JwtAuthenticationExtensions
+interface IInterface
+{
+    
+}
+
+static class JwtAuthenticationExtensions
 {
     public static WebApplicationBuilder AddJwtAuthentication(this WebApplicationBuilder builder)
     {
+        ArgumentNullException.ThrowIfNull(builder);
+        
         builder.Services.AddAuthorization();
 
         builder.Services.AddAuthentication(opts =>

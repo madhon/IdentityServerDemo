@@ -1,5 +1,6 @@
 ﻿namespace IdentityServer4Demo.WeatherApi.Extensions;
 
+using System.Globalization;
 using Serilog;
 using Serilog.Events;
 using Serilog.Settings.Configuration;
@@ -8,13 +9,15 @@ internal static class SerilogExtensions
 {
     public static WebApplicationBuilder AddSerilog(this WebApplicationBuilder builder, string sectionName = "Serilog")
     {
+        ArgumentNullException.ThrowIfNull(builder);
+        
         var serilogOptions = new SerilogOptions();
         builder.Configuration.GetSection(sectionName).Bind(serilogOptions);
 
-        builder.Host.UseSerilog((context, loggerConfiguration) =>
+        builder.Services.AddSerilog(loggerConfiguration =>
         {
             var options = new ConfigurationReaderOptions { SectionName = "Serilog" };
-            loggerConfiguration.ReadFrom.Configuration(context.Configuration, options);
+            loggerConfiguration.ReadFrom.Configuration(builder.Configuration, options);
 
             loggerConfiguration
                 .Enrich.WithProperty("Application", builder.Environment.ApplicationName)
@@ -27,7 +30,7 @@ internal static class SerilogExtensions
             {
                 loggerConfiguration.WriteTo.Async(writeTo =>
                 {
-                    writeTo.Console(outputTemplate: serilogOptions.LogTemplate);
+                    writeTo.Console(outputTemplate: serilogOptions.LogTemplate, formatProvider: CultureInfo.InvariantCulture);
                 });
             }
         });

@@ -2,7 +2,7 @@
 
 using OpenIddict.Abstractions;
 
-public class TestData : IHostedService
+internal sealed class TestData : IHostedService
 {
     private readonly IServiceProvider serviceProvider;
 
@@ -37,15 +37,11 @@ public class TestData : IHostedService
                     OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode,
                     OpenIddictConstants.Permissions.GrantTypes.ClientCredentials,
                     OpenIddictConstants.Permissions.GrantTypes.RefreshToken,
+                    OpenIddictConstants.Permissions.GrantTypes.Password,
                     
                     OpenIddictConstants.Permissions.Prefixes.Scope + ApiConstants.ApiReadScope,
                     OpenIddictConstants.Permissions.Prefixes.Scope + ApiConstants.ApiManageScope,
-                    OpenIddictConstants.Permissions.Prefixes.GrantType + OpenIddictConstants.GrantTypes.ClientCredentials,
-                    OpenIddictConstants.Permissions.Prefixes.GrantType + OpenIddictConstants.GrantTypes.RefreshToken,
-                    OpenIddictConstants.Permissions.Prefixes.GrantType + OpenIddictConstants.GrantTypes.AuthorizationCode,
-                    OpenIddictConstants.Permissions.Prefixes.GrantType + OpenIddictConstants.GrantTypes.Password,
-                    
-                    OpenIddictConstants.Permissions.ResponseTypes.Code
+                    OpenIddictConstants.Permissions.ResponseTypes.Code,
                 }
             };
 

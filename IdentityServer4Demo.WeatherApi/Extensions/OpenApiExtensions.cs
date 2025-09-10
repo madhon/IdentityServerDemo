@@ -3,10 +3,12 @@
 using Microsoft.OpenApi.Models;
 using Scalar.AspNetCore;
 
-public static class OpenApiExtensions
+internal static class OpenApiExtensions
 {
     public static WebApplicationBuilder AddOpenApiServices(this WebApplicationBuilder builder)
     {
+        ArgumentNullException.ThrowIfNull(builder);
+        
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddOpenApi(options =>
         {

@@ -4,7 +4,7 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
 
-public static class LoggerBootstrap
+internal static class LoggerBootstrap
 {
     public static void Configure()
     {

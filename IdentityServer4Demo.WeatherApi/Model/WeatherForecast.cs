@@ -1,6 +1,6 @@
 namespace IdentityServer4Demo.WeatherApi.Model;
 
-public class WeatherForecast
+internal sealed class WeatherForecast
 {
     public DateTime Date { get; set; }
 

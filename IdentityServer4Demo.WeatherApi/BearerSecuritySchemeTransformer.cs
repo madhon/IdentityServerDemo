@@ -8,7 +8,7 @@ internal sealed class BearerSecuritySchemeTransformer(IAuthenticationSchemeProvi
 {
     public async Task TransformAsync(OpenApiDocument document, OpenApiDocumentTransformerContext context, CancellationToken cancellationToken)
     {
-        var authenticationSchemes = await authenticationSchemeProvider.GetAllSchemesAsync();
+        var authenticationSchemes = await authenticationSchemeProvider.GetAllSchemesAsync().ConfigureAwait(false);
         if (authenticationSchemes.Any(authScheme => authScheme.Name == "Bearer"))
         {
             var requirements = new Dictionary<string, OpenApiSecurityScheme>

@@ -13,6 +13,11 @@
     <EnableConfigurationBindingGenerator>true</EnableConfigurationBindingGenerator>
   </PropertyGroup>
 
+    <PropertyGroup>
+        <AnalysisLevel>latest-All</AnalysisLevel>
+        <NoWarn>$(NoWarn);CA1812;CA2007,1591</NoWarn>
+    </PropertyGroup>    
+    
   <PropertyGroup Condition="'$(TF_BUILD)' == 'true' or '$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>

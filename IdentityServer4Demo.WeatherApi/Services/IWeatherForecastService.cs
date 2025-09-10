@@ -1,6 +1,6 @@
 ﻿namespace IdentityServer4Demo.WeatherApi.Services;
 
-public interface IWeatherForeCastService
+internal interface IWeatherForeCastService
 {
-    Task<WeatherForecast[]> GetForecast();
+    ValueTask<WeatherForecast[]> GetForecast();
 }

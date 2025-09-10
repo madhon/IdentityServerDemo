@@ -3,7 +3,7 @@
 using IdentityServer4Demo.WeatherApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
-public static partial class WeatherForecastEndpoint
+internal static partial class WeatherForecastEndpoint
 {
     public static IEndpointRouteBuilder MapGetWeatherForecast(this IEndpointRouteBuilder app)
     {
@@ -11,7 +11,7 @@ public static partial class WeatherForecastEndpoint
             {
                 var logger = loggerFactory.CreateLogger("GetWeatherForecast"); 
                 logger.LogExecuteWeatherForecast();
-                var result = await weatherForeCastService.GetForecast();
+                var result = await weatherForeCastService.GetForecast().ConfigureAwait(false);
 
                 return TypedResults.Ok(result);
             }).RequireAuthorization()
