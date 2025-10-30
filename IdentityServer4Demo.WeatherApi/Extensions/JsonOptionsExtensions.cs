@@ -2,15 +2,15 @@
 
 internal static class JsonOptionsExtensions
 {
-    public static WebApplicationBuilder ConfigureJsonOptions(this WebApplicationBuilder builder)
+    public static IServiceCollection ConfigureJsonOptions(this IServiceCollection services)
     {
-        ArgumentNullException.ThrowIfNull(builder);
+        ArgumentNullException.ThrowIfNull(services);
         
-        builder.Services.ConfigureHttpJsonOptions(opts =>
+        services.ConfigureHttpJsonOptions(opts =>
         {
             opts.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default);
         });
 
-        return builder;
+        return services;
     }
 }

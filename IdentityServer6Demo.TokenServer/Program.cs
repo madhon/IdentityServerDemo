@@ -14,7 +14,6 @@ builder.Services.AddIdentityServer(opts =>
         opts.Events.RaiseInformationEvents = true;
         opts.Events.RaiseFailureEvents = true;
         opts.Events.RaiseSuccessEvents = true;
-
         opts.EmitStaticAudienceClaim = false;
     })
     .AddDeveloperSigningCredential()
