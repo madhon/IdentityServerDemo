@@ -12,8 +12,9 @@ internal static class OpenApiExtensions
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddOpenApi(options =>
         {
+            options.AddScalarTransformers();
             options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
-            options.AddDocumentTransformer((document, context, cancellationToken) =>
+            options.AddDocumentTransformer((document, _, _) =>
             {
                 document.Info = new OpenApiInfo
                 {
