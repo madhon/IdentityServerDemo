@@ -11,13 +11,15 @@ internal static class WeatherServiceExtensions
         services.Configure<ForwardedHeadersOptions>(options =>
         {
             options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-            options.KnownNetworks.Clear();
+            options.KnownIPNetworks.Clear();
             options.KnownProxies.Clear();
         });
         
         return services;
     }
-    
+
+    private static readonly string[] AppJsonMimeType = ["application/json"];
+
     public static WebApplicationBuilder AddWeatherForecastServices(this WebApplicationBuilder builder)
     {
         ArgumentNullException.ThrowIfNull(builder);
@@ -31,8 +33,7 @@ internal static class WeatherServiceExtensions
         builder.Services.AddResponseCompression(opts =>
         {
             opts.EnableForHttps = true;
-            opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
-                new[] { "application/json" });
+            opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(AppJsonMimeType);
             opts.Providers.Add<BrotliCompressionProvider>();
             opts.Providers.Add<GzipCompressionProvider>();
         });

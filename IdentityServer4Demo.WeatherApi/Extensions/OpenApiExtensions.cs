@@ -1,6 +1,6 @@
 ﻿namespace IdentityServer4Demo.WeatherApi.Extensions;
 
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Scalar.AspNetCore;
 
 internal static class OpenApiExtensions

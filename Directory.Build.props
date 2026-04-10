@@ -15,7 +15,7 @@
 
     <PropertyGroup>
         <AnalysisLevel>latest-All</AnalysisLevel>
-        <NoWarn>$(NoWarn);CA1812;CA2007,1591</NoWarn>
+        <NoWarn>$(NoWarn);CA1812;CA2007,1591;CA1515</NoWarn>
     </PropertyGroup>    
     
   <PropertyGroup Condition="'$(TF_BUILD)' == 'true' or '$(GITHUB_ACTIONS)' == 'true'">

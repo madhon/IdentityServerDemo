@@ -14,6 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddProblemDetails();
 
 builder.Services.AddRouting();
+builder.Services.AddAuthorization();
 
 builder.Services.AddOpenIddict()
     .AddCore(options =>
@@ -58,9 +59,7 @@ builder.Services.AddOpenIddict()
         o.UseLocalServer();
         o.UseAspNetCore();
         o.EnableTokenEntryValidation();
-    });;
-
-builder.Services.AddScoped<ApplicationDbContext>();
+    });
 
 var app = builder.Build();
 

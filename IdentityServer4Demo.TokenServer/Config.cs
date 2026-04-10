@@ -36,7 +36,7 @@ internal static class Config
                 {
                     new Secret("secret".Sha256())
                 },
-                AllowedScopes = { "api.weather.read manage" },
+                AllowedScopes = { "api.weather.read", "manage" },
             },
         };
 }

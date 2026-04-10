@@ -17,16 +17,16 @@ internal sealed class WeatherForecastService : IWeatherForeCastService
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching",
     ];
 
-    public async ValueTask<WeatherForecast[]> GetForecast()
+    public ValueTask<WeatherForecast[]> GetForecast()
     {
         var result = Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
-                Date =  timeProvider.GetUtcNow().Date.AddDays(index),
+                Date =  timeProvider.GetUtcNow().AddDays(index),
                 TemperatureC = RandomNumberGenerator.GetInt32(-20, 55),
                 Summary = Summaries[RandomNumberGenerator.GetInt32(Summaries.Length)],
             })
             .ToArray();
 
-        return result;
+        return ValueTask.FromResult(result);
     }
 }

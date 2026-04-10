@@ -16,7 +16,6 @@ internal static partial class WeatherForecastEndpoint
                 return TypedResults.Ok(result);
             }).RequireAuthorization()
             .WithName("GetWeatherForecast")
-            .WithOpenApi()
             .Produces<WeatherForecast[]>();
 
         return app;

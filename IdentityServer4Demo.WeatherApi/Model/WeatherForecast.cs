@@ -2,7 +2,7 @@ namespace IdentityServer4Demo.WeatherApi.Model;
 
 internal sealed class WeatherForecast
 {
-    public DateTime Date { get; set; }
+    public DateTimeOffset Date { get; set; }
 
     public int TemperatureC { get; set; }
 
