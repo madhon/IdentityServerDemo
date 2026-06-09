@@ -16,6 +16,7 @@ builder.Services.AddIdentityServer(opts =>
         opts.Events.RaiseSuccessEvents = true;
         opts.EmitStaticAudienceClaim = false;
     })
+    .AddInMemoryCaching()
     .AddDeveloperSigningCredential()
     .AddInMemoryApiResources(Config.ApiResources)
     .AddInMemoryApiScopes(Config.ApiScopes)

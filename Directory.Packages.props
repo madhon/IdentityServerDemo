@@ -2,17 +2,17 @@
   <ItemGroup>
     <!-- System packages -->
     <!-- Microsoft packages -->
-    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.5" />
-    <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="10.0.5" />
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
-    <PackageVersion Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.17.0" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.5" />
-    <PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.5"/>
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.5"/>
-    <PackageVersion Include="Microsoft.Extensions.Telemetry.Abstractions" Version="10.4.0"/>
-    <PackageVersion Include="Microsoft.Extensions.Http.Polly" Version="10.0.5" />
-    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.4.0" />
-    <PackageVersion Include="System.Text.Json" Version="10.0.5" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.8" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="10.0.8" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8" />
+    <PackageVersion Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.19.1" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.8" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.8"/>
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.8"/>
+    <PackageVersion Include="Microsoft.Extensions.Telemetry.Abstractions" Version="10.6.0"/>
+    <PackageVersion Include="Microsoft.Extensions.Http.Polly" Version="10.0.8" />
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.6.0" />
+    <PackageVersion Include="System.Text.Json" Version="10.0.8" />
     <PackageVersion Include="Microsoft.OpenApi" Version="2.7.2" />
     <!-- 3rd party packages -->
     <PackageVersion Include="IdentityServer4" Version="4.1.2" />
@@ -22,13 +22,13 @@
     <PackageVersion Include="Serilog.Sinks.Async" Version="2.1.0" />
     <PackageVersion Include="Serilog.Sinks.Console" Version="6.1.1" />
     <PackageVersion Include="Serilog.Sinks.Files" Version="7.0.0" />
-    <PackageVersion Include="Duende.IdentityServer" Version="7.4.7" />
+    <PackageVersion Include="Duende.IdentityServer" Version="8.0.0" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageVersion Include="Scalar.AspNetCore" Version="2.13.21" />
-    <PackageVersion Include="Scalar.AspNetCore.Microsoft" Version="2.13.21" />
-    <PackageVersion Include="OpenIddict" Version="7.4.0" />
-    <PackageVersion Include="OpenIddict.AspNetCore" Version="7.4.0" />
-    <PackageVersion Include="OpenIddict.EntityFrameworkCore" Version="7.4.0" />
+    <PackageVersion Include="Scalar.AspNetCore" Version="2.16.1" />
+    <PackageVersion Include="Scalar.AspNetCore.Microsoft" Version="2.16.1" />
+    <PackageVersion Include="OpenIddict" Version="7.5.0" />
+    <PackageVersion Include="OpenIddict.AspNetCore" Version="7.5.0" />
+    <PackageVersion Include="OpenIddict.EntityFrameworkCore" Version="7.5.0" />
     <PackageVersion Include="Polly" Version="8.6.6" />
     <PackageVersion Include="Polly.Core" Version="8.6.6" />
     <PackageVersion Include="Polly.Extensions" Version="8.6.6" />
