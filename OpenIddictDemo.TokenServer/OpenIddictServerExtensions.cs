@@ -35,7 +35,7 @@ internal static class OpenIddictServerExtensions
 
                 try
                 {
-                    context.Request = await request.ReadFromJsonAsync<OpenIddictRequest>() ?? new();
+                    context.Request = await request.ReadFromJsonAsync<OpenIddictRequest>(AppJsonSerializerContext.Default.OpenIddictRequest) ?? new OpenIddictRequest();
                 }
 
                 finally

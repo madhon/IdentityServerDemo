@@ -16,6 +16,7 @@ builder.Services.AddIdentityServer(opts =>
 
         opts.EmitStaticAudienceClaim = true;
     })
+    .AddInMemoryCaching()
     .AddDeveloperSigningCredential()
     .AddInMemoryApiResources(Config.ApiResources)
     .AddInMemoryApiScopes(Config.ApiScopes)

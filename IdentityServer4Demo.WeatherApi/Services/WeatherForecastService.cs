@@ -2,16 +2,8 @@
 
 using System.Security.Cryptography;
 
-internal sealed class WeatherForecastService : IWeatherForeCastService
+internal sealed class WeatherForecastService(TimeProvider timeProvider) : IWeatherForeCastService
 {
-    private readonly TimeProvider timeProvider;
-    
-    public WeatherForecastService(TimeProvider timeProvider)
-    {
-        this.timeProvider = timeProvider;
-    }
-    
-    
     private static readonly string[] Summaries =
     [
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching",
@@ -19,13 +11,14 @@ internal sealed class WeatherForecastService : IWeatherForeCastService
 
     public ValueTask<WeatherForecast[]> GetForecast()
     {
-        var result = Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date =  timeProvider.GetUtcNow().AddDays(index),
-                TemperatureC = RandomNumberGenerator.GetInt32(-20, 55),
-                Summary = Summaries[RandomNumberGenerator.GetInt32(Summaries.Length)],
-            })
-            .ToArray();
+        var result = new WeatherForecast[5];
+        for (var i = 0; i < result.Length; i++)
+        {
+            result[i] = new WeatherForecast(
+                timeProvider.GetUtcNow().AddDays(i + 1),
+                RandomNumberGenerator.GetInt32(-20, 55),
+                Summaries[RandomNumberGenerator.GetInt32(Summaries.Length)]);
+        }
 
         return ValueTask.FromResult(result);
     }

@@ -1,6 +1,20 @@
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.Configure<ForwardedHeadersOptions>(opts =>
+{
+    opts.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    opts.KnownIPNetworks.Clear();
+    opts.KnownProxies.Clear();
+});
+
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default);
+});
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -10,7 +24,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddHostedService<TestData>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.TypeInfoResolver = AppJsonSerializerContext.Default;
+    });
+;
 builder.Services.AddProblemDetails();
 
 builder.Services.AddRouting();
@@ -62,6 +81,8 @@ builder.Services.AddOpenIddict()
     });
 
 var app = builder.Build();
+
+app.UseForwardedHeaders();
 
 app.UseStatusCodePages();
 app.UseExceptionHandler();

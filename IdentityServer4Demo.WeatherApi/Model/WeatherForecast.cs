@@ -1,12 +1,19 @@
 namespace IdentityServer4Demo.WeatherApi.Model;
 
-internal sealed class WeatherForecast
+internal readonly struct WeatherForecast
 {
-    public DateTimeOffset Date { get; set; }
+    public WeatherForecast(DateTimeOffset date, int temperatureC, string? summary)
+    {
+        Date = date;
+        TemperatureC = temperatureC;
+        Summary = summary;
+    }
 
-    public int TemperatureC { get; set; }
+    public DateTimeOffset Date { get; }
+
+    public int TemperatureC { get; }
 
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 
-    public string? Summary { get; set; }
+    public string? Summary { get; }
 }

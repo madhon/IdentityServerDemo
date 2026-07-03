@@ -74,7 +74,7 @@ public sealed class AuthorizationController : Controller
                 properties: new AuthenticationProperties
                 {
                     RedirectUri = Request.PathBase + Request.Path + QueryString.Create(
-                        Request.HasFormContentType ? Request.Form.ToList() : Request.Query.ToList())
+                        Request.HasFormContentType ? Request.Form : Request.Query)
                 });
         }
 
@@ -103,12 +103,9 @@ public sealed class AuthorizationController : Controller
     {
         var claimsPrincipal = (await HttpContext.AuthenticateAsync(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme)).Principal;
 
-        return Ok(new
-        {
-            Name = claimsPrincipal?.GetClaim(OpenIddictConstants.Claims.Subject) ?? string.Empty,
-            Occupation = "Developer",
-            Age = 43,
-        });
+        return Ok(new UserInfoResponse(
+            Name: claimsPrincipal?.GetClaim(OpenIddictConstants.Claims.Subject) ?? string.Empty,
+            Occupation: "Developer",
+            Age: 43));
     }
-    
 }
