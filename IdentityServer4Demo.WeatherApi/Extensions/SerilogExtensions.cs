@@ -25,6 +25,8 @@ internal static class SerilogExtensions
 
             loggerConfiguration.MinimumLevel.Override("Microsoft", LogEventLevel.Information);
             loggerConfiguration.MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning);
+            loggerConfiguration.MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information);
+            loggerConfiguration.MinimumLevel.Override("Microsoft.AspNetCore.Authorization", LogEventLevel.Information);
 
             if (serilogOptions.UseConsole)
             {

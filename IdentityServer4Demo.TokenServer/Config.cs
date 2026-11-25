@@ -1,6 +1,6 @@
 ﻿namespace IdentityServer4Demo.TokenServer;
 
-using IdentityServer4.Models;
+using Open.IdentityServer.Models;
 
 internal static class Config
 {
@@ -19,7 +19,7 @@ internal static class Config
     public static IEnumerable<ApiResource> ApiResources =>
         new List<ApiResource>
         {
-            new("api.weather", "Weather API")
+            new("api://api.weather", "Weather API")
             {
                 Scopes = { "api.weather.read", "manage" },
             },

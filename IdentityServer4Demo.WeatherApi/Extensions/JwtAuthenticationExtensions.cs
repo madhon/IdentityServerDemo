@@ -23,6 +23,7 @@ internal static class JwtAuthenticationExtensions
             {
                 ValidTypes = ["at+jwt"],
                 ValidateIssuer = true,
+                ValidIssuers = ["https://localhost:5150", "http://localhost:5150"],
                 ValidateAudience = true,
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
